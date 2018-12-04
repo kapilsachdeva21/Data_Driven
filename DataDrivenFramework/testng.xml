@@ -1,0 +1,28 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="TestNG Online Learning">
+
+<test name="Login_test">
+    <classes>
+        <class name="dd_testcases.LoginTest" ></class>  
+    </classes>
+</test>
+
+<!-- <test name="Register_test">
+    <classes>
+        <class name="dd_testcases.RegisterTest.java" ></class>  
+    </classes>
+</test> -->
+
+<test name="Testtitle">
+    <classes>
+        <class name="dd_testcases.Testtitle" ></class>  
+    </classes>
+</test>
+
+
+
+
+
+
+
+</suite>

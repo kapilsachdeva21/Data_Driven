@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="2" passed="2">
+  <reporter-output>
+  </reporter-output>
+  <suite name="TestNG Online Learning" duration-ms="6711" started-at="2017-10-07T04:19:19Z" finished-at="2017-10-07T04:19:26Z">
+    <groups>
+    </groups>
+    <test name="Login_test" duration-ms="4184" started-at="2017-10-07T04:19:19Z" finished-at="2017-10-07T04:19:24Z">
+      <class name="dd_testcases.LoginTest">
+        <test-method status="PASS" signature="isSkip()[pri:0, instance:dd_testcases.LoginTest@bf72b5]" name="isSkip" is-config="true" duration-ms="69" started-at="2017-10-07T09:49:19Z" finished-at="2017-10-07T09:49:19Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- isSkip -->
+        <test-method status="PASS" signature="doLogin(java.lang.String, java.lang.String)[pri:0, instance:dd_testcases.LoginTest@bf72b5]" name="doLogin" duration-ms="4049" started-at="2017-10-07T09:49:19Z" data-provider="getData" finished-at="2017-10-07T09:49:24Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[ashukoshik@gmail.com]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[selenium1234]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- doLogin -->
+      </class> <!-- dd_testcases.LoginTest -->
+    </test> <!-- Login_test -->
+    <test name="Testtitle" duration-ms="2287" started-at="2017-10-07T04:19:24Z" finished-at="2017-10-07T04:19:26Z">
+      <class name="dd_testcases.Testtitle">
+        <test-method status="PASS" signature="init()[pri:0, instance:dd_testcases.Testtitle@16813f3]" name="init" is-config="true" duration-ms="19451" started-at="2017-10-07T09:49:00Z" finished-at="2017-10-07T09:49:19Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- init -->
+        <test-method status="PASS" signature="isSkip()[pri:0, instance:dd_testcases.Testtitle@16813f3]" name="isSkip" is-config="true" duration-ms="0" started-at="2017-10-07T09:49:24Z" finished-at="2017-10-07T09:49:24Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- isSkip -->
+        <test-method status="PASS" signature="doLogin(java.lang.String, java.lang.String)[pri:0, instance:dd_testcases.Testtitle@16813f3]" name="doLogin" duration-ms="2277" started-at="2017-10-07T09:49:24Z" data-provider="getData" finished-at="2017-10-07T09:49:26Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[ashukoshik@gmail.com]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[selenium1234]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- doLogin -->
+        <test-method status="PASS" signature="QuitDriver()[pri:0, instance:dd_testcases.Testtitle@16813f3]" name="QuitDriver" is-config="true" duration-ms="20" started-at="2017-10-07T09:49:26Z" finished-at="2017-10-07T09:49:26Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- QuitDriver -->
+      </class> <!-- dd_testcases.Testtitle -->
+    </test> <!-- Testtitle -->
+  </suite> <!-- TestNG Online Learning -->
+</testng-results>

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- author name : Ashok Sharma , Created date : 13-4-2017 -->
+
+
+<project name="TestNGAutomation" default="sendMail" basedir=".">
+
+	<property name="browser" location="C:\Program Files\Google\Chrome\Application\chrome.exe" />
+	
+	<target name="delete">
+		<delete dir="ant" />
+		<delete dir="${basedir}\ant\lib" />
+		<delete dir="${basedir}\ant\src" />
+		<delete dir="${basedir}\ant\bin" />
+		<delete dir="${basedir}\ant\output" />
+	</target>
+
+	<target name="create" depends="delete">
+		<mkdir dir="ant" />
+		<mkdir dir="${basedir}\ant\lib" />
+		<mkdir dir="${basedir}\ant\src" />
+		<mkdir dir="${basedir}\ant\bin" />
+		<mkdir dir="${basedir}\ant\output" />
+	</target>
+
+	<path id="classpath">
+		<pathelement location="${basedir}\ant\lib" />
+		<fileset dir="${basedir}\ant\lib" includes="*.jar" />
+		<pathelement location="${basedir}\ant\bin" />
+		<fileset dir="${basedir}\ant\bin"  />  
+	</path>
+	
+	<path id="test.c">
+			<fileset dir="${basedir}\ant\lib" includes="*.jar">
+				<include name="mail.jar" />
+				<include name="activation.jar" />
+			</fileset>
+		</path>
+
+	<target name="copy" depends="create">
+		<!-- <copydir dest="" src="D:\backup\MobiusSharedCode\src" excludes="**/funlib/**" />  -->
+		<copy todir="${basedir}\ant\src" overwrite="true">
+			<fileset dir="${basedir}\src">
+			</fileset>
+		</copy>
+
+		<copy todir="${basedir}\ant\lib" overwrite="true">
+			<fileset dir="${basedir}\lib" includes="**/*.jar">
+			</fileset>
+		</copy>
+	</target>
+
+	<target name="compile" depends="copy">
+		<javac classpathref="classpath" includeantruntime="true" srcdir="${basedir}\ant\src" destdir="${basedir}\ant\bin" debug="on">
+
+		</javac>
+	</target>
+
+		<!--	<java classpathref="classpath" classname="com.asg.Mobius.testCase.UITest_*.java" fork="true" ></java>
+		<java classpathref="classpath" classname="UITest_FilterTest" fork="true"></java> -->
+		
+			
+			<target name="run" depends="compile">
+				
+				<taskdef name="testng" classname="org.testng.TestNGAntTask" classpathref="classpath" />
+				<testng outputdir="${basedir}\ant\output" classpathref="classpath" useDefaultListeners="true">
+					<xmlfileset dir="${basedir}" includes="testng.xml" />
+				</testng>
+	</target>
+	
+	
+	<target name="generateReport" depends="run">
+	        <delete dir="${basedir}/testng-xslt">
+	        </delete>
+	        <mkdir dir="${basedir}/testng-xslt">
+	        </mkdir>
+	        <xslt in="${basedir}/test-output/testng-results.xml" style="${basedir}/testng-results.xsl" out="${basedir}/testng-xslt/index.html" processor="SaxonLiaison">
+	            <param expression="${basedir}/testng-xslt/" name="testNgXslt.outputDir" />
+	            <param expression="true" name="testNgXslt.sortTestCaseLinks" />
+	            <param expression="FAIL,SKIP,PASS,CONF,BY_CLASS" name="testNgXslt.testDetailsFilter" />
+	            <param expression="true" name="testNgXslt.showRuntimeTotals" />
+	            <classpath refid="test.c">
+	            </classpath>
+	        </xslt>
+	    </target>
+	
+	<target name="RunAndViewReport" depends="generateReport">
+			<exec executable="${browser}" spawn="yes">
+				<arg line="'file:///${basedir}\testng-xslt\index.html'" />
+			</exec>
+		</target>
+	
+	<target name="sendMail" depends="RunAndViewReport">
+			<zip destfile="${basedir}\Report1.zip" basedir="${basedir}\testng-xslt" />
+			<mail enableStartTLS="true" mailhost="smtp.gmail.com" mailport="587" subject="Notification of TESTNG build result" ssl="false" user="q3testautomation@gmail.com" password="q3tech!123" encoding="mime" messagemimetype="text/html" charset="utf-8">
+				<from address="q3testautomation@gmail.com" />
+				<to address="ashukoshik@gmail.com" />
+				<message>The build has finished. A detailed report of this build is attached.</message>
+				<attachments>
+					<fileset dir="${basedir}\testng-xslt">
+						<include name="**/*.zip" />
+					</fileset>
+				</attachments>
+			</mail>
+		</target>
+
+
+</project>

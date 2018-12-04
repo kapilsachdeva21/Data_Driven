@@ -1,0 +1,4 @@
+09:49:26,593 DEBUG wire:86 - http-outgoing-17 << "{"name":"close","sessionId":"29e1ee10-4acc-4fb0-93c5-e14479aaddee","status":0,"value":""}"
+09:49:26,593 DEBUG DefaultManagedHttpClientConnection:81 - http-outgoing-17: Close connection
+09:49:26,593 DEBUG MainClientExec:103 - Connection discarded
+09:49:26,593 DEBUG PoolingHttpClientConnectionManager:320 - Connection released: [id: 17][route: {}->http://127.0.0.1:7055][total kept alive: 0; route allocated: 0 of 2000; total allocated: 0 of 2000]
